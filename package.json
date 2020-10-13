@@ -1,5 +1,5 @@
 {
-  "name": "firegram",
+  "name": "tonesgram",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -8,8 +8,11 @@
     "@testing-library/user-event": "^7.2.1",
     "firebase": "^7.20.0",
     "framer-motion": "^2.8.0",
+    "node-sass": "^4.14.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-dropzone": "^11.2.0",
+    "react-icons": "^3.11.0",
     "react-scripts": "^3.4.3"
   },
   "scripts": {

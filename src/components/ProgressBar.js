@@ -16,11 +16,16 @@ const ProgressBar = ({ file, setFile }) => {
   }, [url, setFile]);
 
   return (
-    <motion.div
-      className="progress-bar"
-      initial={{ width: 0 }}
-      animate={{ width: progress + "%" }}
-    ></motion.div>
+    <div className="progress">
+      <p>
+        Uploading {file.name} <strong>{Math.ceil(progress)}%</strong>
+      </p>
+      <motion.div
+        className="progress-bar"
+        initial={{ width: 0 }}
+        animate={{ width: progress + "%" }}
+      ></motion.div>
+    </div>
   );
 };
 

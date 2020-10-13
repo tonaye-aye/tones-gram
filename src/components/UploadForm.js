@@ -1,6 +1,15 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { useState } from "react";
+
+// dropzone
+import { useDropzone } from "react-dropzone";
+
+// componenents
 import ProgressBar from "./ProgressBar";
+
+// icons
+import { MdPermMedia } from "react-icons/md";
+import { ImFire } from "react-icons/im";
 
 const UploadForm = () => {
   // using a state hook
@@ -10,9 +19,9 @@ const UploadForm = () => {
   // specifing types of images that are allowed to be uploaded
   const types = ["image/png", "image/jpeg"];
 
-  // changed handler function for file selector event
-  const handleChange = (e) => {
-    let selected = e.target.files[0];
+  // dropzone stuff
+  const onDrop = useCallback((acceptedFiles) => {
+    let selected = acceptedFiles[0];
     if (selected && types.includes(selected.type)) {
       setFile(selected);
       setError("");
@@ -20,18 +29,29 @@ const UploadForm = () => {
       setFile(null);
       setError("Please select a .png or .jpg only");
     }
-  };
+  }, []);
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
   // template in JSX
   return (
     <form>
-      <label>
-        <input type="file" onChange={handleChange} />
-        <span>+</span>
-      </label>
+      <h1>Upload...</h1>
+      <div className="drop" {...getRootProps()}>
+        <input {...getInputProps()} />
+        {isDragActive ? (
+          <div>
+            <ImFire size="2.5em" />
+            <p>Drop it like it's hot</p>
+          </div>
+        ) : (
+          <div>
+            <MdPermMedia size="2.5em" />
+            <p>Drag 'n' drop an image (or click here)</p>
+          </div>
+        )}
+      </div>
       <div className="output">
-        {error && <div className="error">{error}</div>}
-        {file && <div>{file.name}</div>}
+        {error && <p className="error">{error}</p>}
         {file && <ProgressBar file={file} setFile={setFile} />}
       </div>
     </form>
