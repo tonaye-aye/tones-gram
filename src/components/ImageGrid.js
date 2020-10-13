@@ -6,7 +6,7 @@ import useFirestore from "../hooks/useFirestore";
 // famer motion
 import { motion } from "framer-motion";
 
-const ImageGrid = ({ setSelectedImg }) => {
+const ImageGrid = ({ setSelectedImg, setBodyOverflow }) => {
   // get all of the 'documents' from the firestore collection
   // -- collection selected is 'images'
   const { docs } = useFirestore("images");
@@ -23,6 +23,7 @@ const ImageGrid = ({ setSelectedImg }) => {
             key={doc.id}
             onClick={() => {
               setSelectedImg(doc.url);
+              setBodyOverflow("hidden");
             }}
           >
             <motion.img

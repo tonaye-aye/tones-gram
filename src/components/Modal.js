@@ -3,10 +3,11 @@ import React from "react";
 //framer motion
 import { motion } from "framer-motion";
 
-const Modal = ({ selectedImg, setSelectedImg }) => {
+const Modal = ({ selectedImg, setSelectedImg, setBodyOverflow }) => {
   const handleClick = (e) => {
     if (e.target.classList.contains("backdrop")) {
       setSelectedImg(null);
+      setBodyOverflow("visible");
     }
   };
   return (
