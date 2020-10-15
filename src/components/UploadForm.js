@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React from "react";
 import { useState } from "react";
 
 // dropzone
@@ -20,8 +20,8 @@ const UploadForm = () => {
   const types = ["image/png", "image/jpeg"];
 
   // dropzone stuff
-  const onDrop = useCallback((acceptedFiles) => {
-    let selected = acceptedFiles[0];
+  const onDrop = (files) => {
+    let selected = files[0];
     if (selected && types.includes(selected.type)) {
       setFile(selected);
       setError("");
@@ -29,7 +29,7 @@ const UploadForm = () => {
       setFile(null);
       setError("Please select a .png or .jpg only");
     }
-  }, []);
+  };
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
   // template in JSX

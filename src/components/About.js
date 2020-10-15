@@ -1,7 +1,6 @@
 import React from "react";
 
 // nav stuff
-import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 
 // icons
