@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import { useMediaQuery } from "react-responsive";
 
 // dropzone
 import { useDropzone } from "react-dropzone";
@@ -32,6 +33,11 @@ const UploadForm = () => {
   };
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
+  // responsive
+  const isTabletOrMobileDevice = useMediaQuery({
+    query: "(max-device-width: 1224px)"
+  });
+
   // template in JSX
   return (
     <form>
@@ -46,7 +52,11 @@ const UploadForm = () => {
         ) : (
           <div>
             <MdPermMedia size="2.5em" />
-            <p>Drag 'n' drop an image (or click here)</p>
+            <p>
+              {isTabletOrMobileDevice
+                ? `Touch to upload`
+                : `Drag 'n' drop an image (or click here)`}
+            </p>
           </div>
         )}
       </div>
