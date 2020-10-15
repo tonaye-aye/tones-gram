@@ -19,7 +19,7 @@ const Navbar = () => {
       </p>
 
       <div className="fold">
-        <p>Share memories</p>
+        <p className="hide">Share memories</p>
         <button
           type="button"
           onClick={() => {

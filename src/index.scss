@@ -94,6 +94,11 @@ nav {
     display: flex;
     justify-content: center;
     align-items: center;
+    .hide {
+      @media screen and (max-width: 600px) {
+        display: none;
+      }
+    }
     button {
       margin: 0 0 0 1rem;
     }
@@ -147,7 +152,7 @@ nav {
 form {
   .drop {
     text-align: center;
-    padding: 3rem 0;
+    padding: 3rem 2rem;
     background: rgba(0, 0, 0, 0.1);
     margin: 0 auto 2rem;
     color: rgba(255, 255, 255, 0.75);
